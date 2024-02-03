@@ -10,10 +10,10 @@ class Author:
 
     def addWrittenBook(self, book):
         assert type(book) == Book
-        if not book in self.booksWritten:
+        if not (book in self.booksWritten):
             self.booksWritten.append(book)
             return True
-        return False
+        raise Exception("Book already registered")
 
     def getName(self):
         return self.name
@@ -63,7 +63,7 @@ class Book:
 
 if __name__ == "__main__":
     a0 = Author()
-    a1 = Author("0010", "Ana", False, [], "PT")
+    #a1 = Author("0010", "Ana", False, [], "PT")
     b0 = Book()
     b0.updateAuthor(a0)
     a0.addWrittenBook(b0)

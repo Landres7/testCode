@@ -25,8 +25,22 @@ class Books:
         saveState(self.authors, "authors_")
         saveState(self.books, "books_")
 
-
+    def clearBookList(self):
+        cleanList = []
+        for b in self.books:
+            if b.author:
+                cleanList += [b]
+        self.books = cleanList
+        self._saveState()
         
+
+    def getDictAuthors(self):
+        return {"authors": [{"authorId":a.authorId, "name":a.name, "alive":a.alive} for a in self.authors]}
+
+
+
+    def getDictBooks(self):
+        return {"books": [{"bookId":b.bookId, "title":b.title, "author":b.author.name, "volume":b.volume} for b in self.books]}
 
 
     def addAuthor(self, name, nationality, alive):
@@ -39,12 +53,14 @@ class Books:
         return True
 
     def addBook(self, title, nPages, volume, authorName):
-        newKey = str(len(self.books)+1)
-        if title in [b.title for b in self.books]:
-            print("Book Title already exists")
-            return False
-
         author = self.getAuthorByName(authorName)
+        if not author:
+            raise Exception(f"Author {authorName} does not exist")
+        
+        newKey = str(len(self.books)+1)
+        if title.lower() in [b.title.lower() for b in self.books]:
+            raise Exception("Book Title already exists")
+        
         newBook = Book(newKey, title, author, nPages, volume)
         self.books.append(newBook)
         author.addWrittenBook(newBook)
@@ -59,7 +75,7 @@ class Books:
         
     def getAuthorByName(self, name):
         for a in self.authors:
-            if a.name == name:
+            if a.name.lower() == name.lower():
                 return a
         return None
 
