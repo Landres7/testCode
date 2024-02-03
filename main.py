@@ -2,7 +2,7 @@ from typing import Union
 
 from fastapi import FastAPI
 
-from Books import Books
+from Books import getBooksSavedState
 
 bookList = getBooksSavedState()
 

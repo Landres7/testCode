@@ -54,7 +54,6 @@ class Books:
         return True
 
     def getBooksByIds(self, bookIds=[]):
-        currentBooks = {b.bookId:b for b in self.books}
         return list(filter(lambda x: (x.bookId in bookIds), self.books))
      
         
