@@ -15,6 +15,10 @@ class Author:
             return True
         raise Exception("Book already registered")
 
+    def getDictBooksWrittenList(self):
+        return [{"bookId":b.bookId, "title":b.title, "author":b.author.name, "volume":b.volume}
+                          for b in self.booksWritten]
+
     def getName(self):
         return self.name
 

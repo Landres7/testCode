@@ -35,7 +35,7 @@ class Books:
         
 
     def getDictAuthors(self):
-        return {"authors": [{"authorId":a.authorId, "name":a.name, "alive":a.alive} for a in self.authors]}
+        return {"authors": [{"authorId":a.authorId, "name":a.name, "alive":a.alive, "booksWritten":a.getDictBooksWrittenList()} for a in self.authors]}
 
 
 
