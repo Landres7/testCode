@@ -30,7 +30,13 @@ def getAllAuthors():
     except Exception as e:
         return exceptionHandler(e)
 
-@app.get("/authors/<authorId>")
+@app.post("/authors")
+def addAuthor(name:str, nationality:str,  alive:bool):
+    if bookList.addAuthor(name, nationality, alive):
+        return {"msg":"Success"}
+    return {"msg": "Error - Author name already exists"}
+
+@app.get("/authors/{authorId}")
 def getAuthorById(authorId:str):
     try:
         return {"authors":
@@ -61,8 +67,4 @@ def read_root():
 @app.get("/hey")
 def read_root():
     return "hello! How are you?"
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
