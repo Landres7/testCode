@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/books")
 def getAllBooks():
-    return {"books":bookList}
+    return {"books":bookList.books}
 
 @app.get("/")
 def read_root():
