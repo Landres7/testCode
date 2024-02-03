@@ -2,8 +2,15 @@ from typing import Union
 
 from fastapi import FastAPI
 
+from Books import Books
+
+bookList = getBooksSavedState()
+
 app = FastAPI()
 
+@app.get("/books")
+def getAllBooks():
+    return {"books":bookList}
 
 @app.get("/")
 def read_root():
