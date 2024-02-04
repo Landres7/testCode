@@ -6310,3 +6310,5 @@ INFO:     77.54.97.191:55039 - "POST /purchase/barkley?title=tea&price=199&payed
 INFO:     77.54.97.191:55040 - "GET /customers/bar HTTP/1.1" 200 OK
 INFO:     77.54.97.191:55048 - "GET /authors HTTP/1.1" 200 OK
 INFO:     77.54.97.191:19157 - "POST /authors?name=Fred&nationality=EN&alive=true HTTP/1.1" 200 OK
+INFO:     77.54.97.191:55120 - "GET /authors HTTP/1.1" 200 OK
+INFO:     128.14.211.186:34020 - "GET / HTTP/1.1" 200 OK
