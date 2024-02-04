@@ -44,6 +44,8 @@ def getAuthorById(authorId:str):
                                     bookList.getDictAuthors()["authors"]))}
     except Exception as e:
         return exceptionHandler(e)
+
+    
 @app.get("/books")
 def getAllBooks():
     try:
