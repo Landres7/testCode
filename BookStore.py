@@ -63,20 +63,21 @@ class BookStore:
         return self.books.getDictAuthors()
 
 if __name__ == "__main__":
-    bs0 = BookStore("test_", True)
+    bs0 = BookStore("testDev_", False)
 ##    bs0 = BookStore("test_")
-##    bs0.registerAuthor("Andre", "PT", True)
-##    bs0.registerAuthor("Bob", "PT", True)
-##    bs0.registerAuthor("Charlie", "US", False)
-##    bs0.registerBook("Tea", 200, "vol 1", "andre")
-##    bs0.registerBook("Tea2", 500, "vol 12", "andre")
-##    bs0.registerBook("mah name", 2200, "vol 31", "Bob")
-##    bs0.registerBook("eh jeff", 2200, "vol 31", "Charlie")
-##    
-##    bs0.registerCostumer("andre s", "01-01-2001")
-##    bs0.registerCostumer("Barkley", "01-10-2011")
-##    bs0.registerCostumer("Cat", "01-01-1990")
-##    bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
-##    bs0.registerPurchaseByName("andre s", ["1", "2"], 200, 200)
-##    bs0.registerPurchaseByName("cat", ["4"], 200, 200)
+    bs0.registerAuthor("Andre", "PT", True)
+    bs0.registerAuthor("Bob", "PT", True)
+    bs0.registerAuthor("Charlie", "US", False)
+    
+    bs0.registerBook("Tea", 200, "vol 1", "andre")
+    bs0.registerBook("Tea2", 500, "vol 12", "andre")
+    bs0.registerBook("mah name", 2200, "vol 31", "Bob")
+    bs0.registerBook("eh jeff", 2200, "vol 31", "Charlie")
+    
+    bs0.registerCostumer("andre s", "01-01-2001")
+    bs0.registerCostumer("Barkley", "01-10-2011")
+    bs0.registerCostumer("Cat", "01-01-1990")
+    bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
+    bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
+    bs0.registerPurchaseByName("cat", ["4"], 200, 200)
     
