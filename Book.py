@@ -1,5 +1,4 @@
 
-
 class Author:
     def __init__(self, authorId="0000", name="john doe", alive=True, booksWritten=[], nationality="PT"):
         self.authorId = authorId
