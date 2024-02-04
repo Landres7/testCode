@@ -17,6 +17,14 @@ def exceptionHandler(e):
     return {"msg": "Error: "+str(e)}
 
 
+@app.get("/Reset")
+def restState(newTag:str = None):
+    try:
+        newTag = "testDev_" if not newTag else newTag
+        bookStore = resetBookStore(newTag)
+        return {"msg":"Success"}
+    except Exception as e:
+        return {"msg": "Error: "+str(e)} 
 
 @app.get("/cleanBooksList")
 def cleanAllBooks():
@@ -47,14 +55,6 @@ def registerPurchaseByTitle(cname:str, title:str, price:float, payed:float):
     except Exception as e:
         return exceptionHandler(e)
 
-@app.get("/customers")
-def getAllCostumers():
-    try:
-        return bookStore.getCostumers()
-
-    except Exception as e:
-        return exceptionHandler(e)
-
 
 @app.post("/customers")
 def registerCostumer(name:str, dob:str):
@@ -65,6 +65,35 @@ def registerCostumer(name:str, dob:str):
 
     except Exception as e:
         return exceptionHandler(e)
+
+@app.post("/authors")
+def addAuthor(name:str, nationality:str,  alive:bool):
+    try:
+        if bookStore.registerAuthor(name, nationality, alive):
+            return {"msg":"Success"}
+        return {"msg": "Error - Author name already exists"}
+    except Exception as e:
+        return exceptionHandler(e)
+
+
+@app.post("/books")
+def addBook(title:str, authorName:str, volume:str, numPages:int):
+    try:
+        if bookStore.registerBook(title, numPages, volume, authorName):
+            return {"msg":"Success"}
+        return {"msg":"Error - Book Title already exists"}
+    except Exception as e:
+        return exceptionHandler(e)
+
+@app.get("/customers")
+def getAllCostumers():
+    try:
+        return bookStore.getCostumers()
+
+    except Exception as e:
+        return exceptionHandler(e)
+
+
 
 
 @app.get("/customers/{cname}")
@@ -83,11 +112,7 @@ def getAllAuthors():
     except Exception as e:
         return exceptionHandler(e)
 
-@app.post("/authors")
-def addAuthor(name:str, nationality:str,  alive:bool):
-    if bookStore.registerAuthor(name, nationality, alive):
-        return {"msg":"Success"}
-    return {"msg": "Error - Author name already exists"}
+
 
 @app.get("/authors/{authorId}")
 def getAuthorById(authorId:str):
@@ -118,14 +143,7 @@ def searchBooksByTitle(title):
         return exceptionHandler(e)
 
 
-@app.post("/books")
-def addBook(title:str, authorName:str, volume:str, numPages:int):
-    try:
-        if bookStore.registerBook(title, numPages, volume, authorName):
-            return {"msg":"Success"}
-        return {"msg":"Error - Book Title already exists"}
-    except Exception as e:
-        return exceptionHandler(e)
+
 
 @app.get("/")
 def read_root():
