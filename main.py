@@ -16,6 +16,8 @@ def exceptionHandler(e):
     
     return {"msg": "Error: "+str(e)}
 
+
+
 @app.get("/cleanBooksList")
 def cleanAllBooks():
     try:
@@ -34,11 +36,42 @@ def registerPurchase(costumerName:str, itemPurchased:str, price:float, payed:flo
     except Exception as e:
         return exceptionHandler(e)
 
+
+@app.post("/purchase/{cname}")
+def registerPurchaseByTitle(cname:str, title:str):
+    
+    try:
+        if bookStore.registerPurchaseByTitle(cname, title):
+            return {"msg":"Success"}
+        return {"msg":"Error - Unknown"}
+    except Exception as e:
+        return exceptionHandler(e)
+
 @app.get("/customers")
 def getAllCostumers():
     try:
         return bookStore.getCostumers()
 
+    except Exception as e:
+        return exceptionHandler(e)
+
+
+@app.post("/customers")
+def registerCostumer(name:str, dob:str):
+    try:
+        if bookStore.registerCostumer(name, dob):
+            return {"msg":"Success"}
+        return {"msg":"Error - Unknown"}
+
+    except Exception as e:
+        return exceptionHandler(e)
+
+
+@app.get("/customers/{cname}")
+def searchCostumerName(cname:str):
+    try:
+        return bookStore.searchCostumerName(cname)
+            
     except Exception as e:
         return exceptionHandler(e)
 
@@ -65,6 +98,7 @@ def getAuthorById(authorId:str):
     except Exception as e:
         return exceptionHandler(e)
 
+
     
 @app.get("/books")
 def getAllBooks():
@@ -73,6 +107,16 @@ def getAllBooks():
         return bookStore.getBooksDict()
     except Exception as e:
         return exceptionHandler(e)
+
+@app.get("/books/{title}")
+def searchBooksByTitle(title):
+    try:
+        
+        return  bookStore.searchBooksByTitle(title)
+    
+    except Exception as e:
+        return exceptionHandler(e)
+
 
 @app.post("/books")
 def addBook(title:str, authorName:str, volume:str, numPages:int):

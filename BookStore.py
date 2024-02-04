@@ -1,15 +1,15 @@
 from Books import Books, getBooksSavedState
 from Costumers import Costumers
-import os
-import pickle
-
-def saveState(state, tag="W_"):
-    with open(f'{tag}state.pkl', 'wb') as fp:
-        pickle.dump(state, fp)
-
-def getState(tag="W_"):
-    with open(f'{tag}state.pkl', 'rb') as fp:
-        return pickle.load(fp)
+##import os
+##import pickle
+##
+##def saveState(state, tag="W_"):
+##    with open(f'{tag}state.pkl', 'wb') as fp:
+##        pickle.dump(state, fp)
+##
+##def getState(tag="W_"):
+##    with open(f'{tag}state.pkl', 'rb') as fp:
+##        return pickle.load(fp)
 
 
 class BookStore:
@@ -35,6 +35,9 @@ class BookStore:
     def registerPurchaseByName(self, name, itemsPurchased, price, payed):
         return self.costumers.addPurchaseByName(name, itemsPurchased, price, payed)
         
+    def registerPurchaseByTitle(self, name, title, price, payed):
+        pass
+        
 
     def registerAuthor(self, name, nationality, alive):
         return self.books.addAuthor(name, nationality, alive)
@@ -52,6 +55,12 @@ class BookStore:
         if len(costumer) != 1:
             raise Exception(f"Costumer {name} was not found")
         return costumer[0]
+
+    def searchCostumerName(self, name):
+        return self.costumers.searchCostumerName(name)
+
+    def searchBooksByTitle(self, title):
+        return self.books.searchBooksByTitle(title)
 
     def getCostumersDict(self):
         return self.costumers.getCostumersDict()

@@ -10,7 +10,7 @@ def getState(tag="W_"):
         return pickle.load(fp)
 
 def getBooksSavedState(tag=""):
-    newBooks = Books()
+    newBooks = Books(tag)
     newBooks.authors = getState(tag+"authors_")
     newBooks.books = getState(tag+"books_")
     return newBooks
@@ -72,6 +72,9 @@ class Books:
 
     def getBooksByIds(self, bookIds=[]):
         return list(filter(lambda x: (x.bookId in bookIds), self.books))
+
+    def searchBooksByTitle(self, title):
+        return list(filter(lambda b: title.lower() in b["title"].lower(), self.getDictBooks()["books"]))
      
         
     def getAuthorByName(self, name):

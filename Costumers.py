@@ -106,6 +106,10 @@ class Costumers:
                     }
                 for c in self.costumers]
 
+
+    def searchCostumerName(self, name):
+        return list(filter(lambda c: name.lower() in c.name.lower(), self.costumers))
+
     def findCostumersByName(self, name):
         return list(filter(lambda c: c.name.lower() == name.lower(), self.costumers))
     
