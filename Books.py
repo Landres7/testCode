@@ -9,21 +9,22 @@ def getState(tag="W_"):
     with open(f'{tag}state.pkl', 'rb') as fp:
         return pickle.load(fp)
 
-def getBooksSavedState():
+def getBooksSavedState(tag=""):
     newBooks = Books()
-    newBooks.authors = getState("authors_")
-    newBooks.books = getState("books_")
+    newBooks.authors = getState(tag+"authors_")
+    newBooks.books = getState(tag+"books_")
     return newBooks
 
 
 class Books:
-    def __init__(self):
+    def __init__(self, tag=""):
         self.books =[]
         self.authors = []
+        self.tag = tag
 
     def _saveState(self):
-        saveState(self.authors, "authors_")
-        saveState(self.books, "books_")
+        saveState(self.authors, self.tag+"authors_")
+        saveState(self.books, self.tag+"books_")
 
     def clearBookList(self):
         cleanList = []
