@@ -3,7 +3,7 @@ from typing import Union, List
 from fastapi import FastAPI
 
 from BookStore import BookStore, resetBookStore
-
+bookStore = BookStore("testDev_", True)
 try:
     bookStore = BookStore("testDev_", True)
 except:

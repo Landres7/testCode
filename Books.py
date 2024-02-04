@@ -51,6 +51,7 @@ class Books:
             return False
         
         self.authors.append(Author(newKey, name, alive, [], nationality))
+        self._saveState()
         return True
 
     def addBook(self, title, nPages, volume, authorName):
