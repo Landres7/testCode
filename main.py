@@ -2,9 +2,12 @@ from typing import Union, List
 
 from fastapi import FastAPI
 
-from BookStore import BookStore
+from BookStore import BookStore, 
 
-bookStore = BookStore("testDev_", True)
+try:
+    bookStore = BookStore("testDev_", True)
+except:
+    bookStore = resetBookStore("testDev_")
 
 app = FastAPI()
 
