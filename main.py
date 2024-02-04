@@ -38,10 +38,10 @@ def registerPurchase(costumerName:str, itemPurchased:str, price:float, payed:flo
 
 
 @app.post("/purchase/{cname}")
-def registerPurchaseByTitle(cname:str, title:str):
+def registerPurchaseByTitle(cname:str, title:str, price:float, payed:float):
     
     try:
-        if bookStore.registerPurchaseByTitle(cname, title):
+        if bookStore.registerPurchaseByTitle(cname, title, price, payed):
             return {"msg":"Success"}
         return {"msg":"Error - Unknown"}
     except Exception as e:

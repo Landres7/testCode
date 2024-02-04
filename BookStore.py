@@ -36,7 +36,11 @@ class BookStore:
         return self.costumers.addPurchaseByName(name, itemsPurchased, price, payed)
         
     def registerPurchaseByTitle(self, name, title, price, payed):
-        pass
+        booksFound = self.books.getBookByTitle(title)
+        if len(booksFound) != 1:
+            raise Exception(f"Title: {title} was not found")
+
+        return self.registerPurchaseByName(name, [booksFound[0]["bookId"]], price, payed)
         
 
     def registerAuthor(self, name, nationality, alive):

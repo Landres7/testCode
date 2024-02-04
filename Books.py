@@ -75,7 +75,9 @@ class Books:
 
     def searchBooksByTitle(self, title):
         return list(filter(lambda b: title.lower() in b["title"].lower(), self.getDictBooks()["books"]))
-     
+    
+    def getBookByTitle(self, title):
+        return list(filter(lambda b: title.lower() == b["title"].lower(), self.getDictBooks()["books"]))
         
     def getAuthorByName(self, name):
         for a in self.authors:
