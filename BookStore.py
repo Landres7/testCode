@@ -80,6 +80,7 @@ def resetBookStore(tag="testDev_"):
     bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
     bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
     bs0.registerPurchaseByName("cat", ["4"], 200, 200)
+    return bs0
     
 
 
