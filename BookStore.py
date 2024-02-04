@@ -62,8 +62,8 @@ class BookStore:
     def getAuthorsDict(self):
         return self.books.getDictAuthors()
 
-if __name__ == "__main__":
-    bs0 = BookStore("testDev_", False)
+def resetBookStore(tag="testDev_"):
+    bs0 = BookStore(tag, False)
 ##    bs0 = BookStore("test_")
     bs0.registerAuthor("Andre", "PT", True)
     bs0.registerAuthor("Bob", "PT", True)
@@ -80,4 +80,9 @@ if __name__ == "__main__":
     bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
     bs0.registerPurchaseByName("andre s", ["1"], 200, 200)
     bs0.registerPurchaseByName("cat", ["4"], 200, 200)
+    
+
+
+if __name__ == "__main__":
+    resetBookStore()
     
