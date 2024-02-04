@@ -2,7 +2,7 @@ from typing import Union, List
 
 from fastapi import FastAPI
 
-from BookStore import BookStore, 
+from BookStore import BookStore, resetBookStore
 
 try:
     bookStore = BookStore("testDev_", True)
