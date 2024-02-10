@@ -85,6 +85,12 @@ def addBook(title:str, authorName:str, volume:str, numPages:int):
     except Exception as e:
         return exceptionHandler(e)
 
+
+@app.get('/easteregg')
+def easterEgg():
+    return "Hello World! :D"
+
+
 @app.get("/customers")
 def getAllCostumers():
     try:
